@@ -12,7 +12,7 @@
 
 
 
-<h2>2- Descrição de Casos de Uso</h2>
+<h2>2- Descrição de Casos de Uso - Clientes</h2>
 
 <h3> Descrição: AdicionarPedidosCarrinho </h3>
 
@@ -33,6 +33,20 @@
 <h3> Descrição: FecharConta </h3>
 
 ![image](https://github.com/user-attachments/assets/ce87a30a-eb0c-4979-b2f3-0f96a1b0fa1a)
+
+<h2> Descrição de Casos de Uso - Funcionário/Gerente </h2>
+
+<h3> Descrição - CadastrarItem </h3>
+
+![image](https://github.com/user-attachments/assets/d0378b5b-a27f-4e86-b51c-428108f35662)
+
+<h3> Descrição - EditarItem </h3>
+
+![image](https://github.com/user-attachments/assets/093389d1-1474-40a6-8f6b-6b60ba35d6e5)
+
+<h3> Descrição - AtivarDesativarItem </h3>
+
+![image](https://github.com/user-attachments/assets/009979c4-805e-4d95-b2d4-4a164102eeb1)
 
 
 
