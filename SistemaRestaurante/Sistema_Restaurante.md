@@ -32,7 +32,8 @@
 
 <h3> Descrição: FecharConta </h3>
 
-![image](https://github.com/user-attachments/assets/ce87a30a-eb0c-4979-b2f3-0f96a1b0fa1a)
+![image](https://github.com/user-attachments/assets/cd8570ed-ba54-4f4a-945e-779931f8f3a1)
+
 
 <h2> Descrição de Casos de Uso - Funcionário/Gerente </h2>
 
