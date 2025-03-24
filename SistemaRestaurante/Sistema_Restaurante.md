@@ -50,6 +50,9 @@
 ![image](https://github.com/user-attachments/assets/009979c4-805e-4d95-b2d4-4a164102eeb1)
 
 
+<h2>Diagrama de Classe</h2>
+
+![image](https://github.com/user-attachments/assets/aafa3045-7881-46f6-a333-628401d70bf6)
 
 
 
