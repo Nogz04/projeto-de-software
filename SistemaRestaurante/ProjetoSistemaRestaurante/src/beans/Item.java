@@ -11,17 +11,27 @@ package beans;
 public class Item {
     
    private int id;
+   private String nomeItem;
    private String categoriaItem;
    private double valorItem;
    private int quantidadeItem;
 
-    public Item(int id, String categoriaItem, double valorItem, int quantidadeItem) {
+    public Item(int id, String nomeItem, String categoriaItem, double valorItem, int quantidadeItem) {
         this.id = id;
         this.categoriaItem = categoriaItem;
         this.valorItem = valorItem;
         this.quantidadeItem = quantidadeItem;
     }
 
+    public String getNomeItem() {
+        return nomeItem;
+    }
+
+    public void setNomeItem(String nomeItem) {
+        this.nomeItem = nomeItem;
+    }
+
+    
     public int getId() {
         return id;
     }
