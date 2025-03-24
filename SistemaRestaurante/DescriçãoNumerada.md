@@ -19,8 +19,8 @@
    4.1. O sistema não pode incluir bebidas alcoólicas no menu.  
    4.2. O programa não pode ser fechado pelo usuário.  
    4.3. O sistema não exige login para acesso.  
-   4.4. O menu deve conter três opções principais.
-   4.5 A taxa de serviço de 10% sob o valor total como pagamento para o garçom é opcional para o cliente pagar.
+   4.4. O menu deve conter três opções principais. <br>
+   4.5. A taxa de serviço de 10% sob o valor total como pagamento para o garçom é opcional para o cliente pagar.
 
 6. **Interface do Sistema:**  
    5.1. Exibição do cardápio com as opções disponíveis.  
