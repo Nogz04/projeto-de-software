@@ -11,24 +11,30 @@ package beans;
 public class Item {
     
    private int id;
-   private String nomeItem;
-   private String categoriaItem;
-   private double valorItem;
-   private int quantidadeItem;
+   private String nome;
+   private String categoria;
+   private double valor;
+   private int quantidade;
 
-    public Item(int id, String nomeItem, String categoriaItem, double valorItem, int quantidadeItem) {
+    public Item(int id, String nome, String categoria, double valor, int quantidade) {
         this.id = id;
-        this.categoriaItem = categoriaItem;
-        this.valorItem = valorItem;
-        this.quantidadeItem = quantidadeItem;
+        this.nome = nome;
+        this.categoria = categoria;
+        this.valor = valor;
+        this.quantidade = quantidade;
+    }
+    
+    public Item (){
+        
+        
     }
 
-    public String getNomeItem() {
-        return nomeItem;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomeItem(String nomeItem) {
-        this.nomeItem = nomeItem;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     
@@ -40,28 +46,28 @@ public class Item {
         this.id = id;
     }
 
-    public String getCategoriaItem() {
-        return categoriaItem;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setCategoriaItem(String categoriaItem) {
-        this.categoriaItem = categoriaItem;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
-    public double getValorItem() {
-        return valorItem;
+    public double getValor() {
+        return valor;
     }
 
-    public void setValorItem(double valorItem) {
-        this.valorItem = valorItem;
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
-    public int getQuantidadeItem() {
-        return quantidadeItem;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setQuantidadeItem(int quantidadeItem) {
-        this.quantidadeItem = quantidadeItem;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
    
    

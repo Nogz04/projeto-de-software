@@ -13,13 +13,13 @@ public class ItemPedido {
     private int idItemPedidos;
     private Item id_Item;
     private Pedido id_Pedido;
-    private int quantidadePedidos;
+    private int quantidade;
 
-    public ItemPedido(int idItemPedidos, Item id_Item, Pedido id_Pedido, int quantidadePedidos) {
+    public ItemPedido(int idItemPedidos, Item id_Item, Pedido id_Pedido, int quantidade) {
         this.idItemPedidos = idItemPedidos;
         this.id_Item = id_Item;
         this.id_Pedido = id_Pedido;
-        this.quantidadePedidos = quantidadePedidos;
+        this.quantidade = quantidade;
     }
 
     
@@ -48,12 +48,12 @@ public class ItemPedido {
         this.id_Pedido = id_Pedido;
     }
 
-    public int getQuantidadePedidos() {
-        return quantidadePedidos;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setQuantidadePedidos(int quantidadePedidos) {
-        this.quantidadePedidos = quantidadePedidos;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
     
     
