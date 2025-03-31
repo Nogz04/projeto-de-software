@@ -15,19 +15,31 @@ public class Item {
    private String categoria;
    private double valor;
    private int quantidade;
+   private String descricao;
 
-    public Item(int id, String nome, String categoria, double valor, int quantidade) {
+    public Item(int id, String nome, String categoria, double valor, int quantidade, String descricao) {
         this.id = id;
         this.nome = nome;
         this.categoria = categoria;
         this.valor = valor;
         this.quantidade = quantidade;
+        this.descricao = descricao;
     }
     
     public Item (){
         
         
     }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+    
+    
 
     public String getNome() {
         return nome;

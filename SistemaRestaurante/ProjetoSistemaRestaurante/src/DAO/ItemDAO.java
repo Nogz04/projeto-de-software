@@ -29,30 +29,31 @@ public class ItemDAO {
     private Connection conn;
     
     
-    //O construtor de PessoaDAO inicializa os objetos conexao e conn.
+    
     public ItemDAO() {
-        this.conexao = new Conexao(); //Cria uma nova instância da classe Conexao, que gerencia a conexão com o banco.
-        this.conn = this.conexao.getConexao(); //Chama o método getConexao() da classe Conexao, que retorna a conexão ativa.
-                                               // Esse objeto conn será usado para executar comandos SQL.
+        this.conexao = new Conexao(); 
+        this.conn = this.conexao.getConexao(); 
+                                               
     }
     //Criando o INSERT INTO do SQL.
     public void inserir(Item item){
         
-        String sql = "INSERT INTO Item (nome, categoria, valor, quantidade) VALUES (?,?,?,?);";
-        //O INSERT INTO insere um novo registro na tabela pessoa, 
-        //onde os valores para as colunas nome, sexo e idioma serão fornecidos por parâmetros (?,?,?).
+        String sql = "INSERT INTO Item (nome, categoria, valor, quantidade, descricao) VALUES (?,?,?,?,?);";
+        
         
         try {
             
-            // O objeto PreparedStatement permite que você substitua os '?' no SQL com valores reais.
+            
             PreparedStatement stmt = this.conn.prepareStatement(sql);
             
-            //Substituição dos Parâmetros:
-            //Aqui os parâmetros ? são preenchidos com os valores correspondentes:
-            stmt.setString(1, item.getNome()); //O primeiro parâmetro 1 é substituído por pessoa.getNome().
-            stmt.setString(2, item.getCategoria()); //O segundo parâmetro 2 é substituído por pessoa.getSexo().
-            stmt.setDouble(3, item.getValor()); //O terceiro parâmetro 3 é substituído por pessoa.getIdioma().
-            stmt.setInt(4, item.getQuantidade()); //O terceiro parâmetro 3 é substituído por pessoa.getIdioma().
+            
+            stmt.setString(1, item.getNome()); 
+            stmt.setString(2, item.getCategoria()); 
+            stmt.setDouble(3, item.getValor()); 
+            stmt.setInt(4, item.getQuantidade());
+            stmt.setString(5, item.getDescricao());
+            
+            
             
             stmt.execute(); //Isso executa o comando SQL, inserindo o registro no banco de dados
             
@@ -65,8 +66,7 @@ public class ItemDAO {
     public Item consulta(int id){
         
         String sql = "SELECT * FROM Item WHERE id = ?;";
-        //O INSERT INTO insere um novo registro na tabela pessoa, 
-        //onde os valores para as colunas nome, sexo e idioma serão fornecidos por parâmetros (?,?,?).
+        
         
         try {
             
@@ -84,6 +84,7 @@ public class ItemDAO {
             i.setCategoria(rs.getString("categoria"));
             i.setValor(rs.getDouble("valor"));
             i.setQuantidade(rs.getInt("quantidade"));
+            i.setDescricao(rs.getString("descricao"));
             
             return i;
             
@@ -96,9 +97,7 @@ public class ItemDAO {
     
     public void atualizar(Item item){
         
-        String sql = "UPDATE item set nome = ?, categoria = ?, valor = ?, quantidade = ? WHERE id = ?;";
-        //O INSERT INTO insere um novo registro na tabela pessoa, 
-        //onde os valores para as colunas nome, sexo e idioma serão fornecidos por parâmetros (?,?,?).
+        String sql = "UPDATE item set nome = ?, categoria = ?, valor = ?, quantidade = ?, descricao = ? WHERE id = ?;";
         
         try {
             
@@ -109,7 +108,8 @@ public class ItemDAO {
             stmt.setString(2, item.getCategoria());
             stmt.setDouble(3, item.getValor());
             stmt.setInt(4, item.getQuantidade());
-            stmt.setInt(5, item.getId());
+            stmt.setString(5, item.getDescricao());
+            stmt.setInt(6, item.getId());
             
             stmt.execute();
             
@@ -120,25 +120,7 @@ public class ItemDAO {
         }
     }
     
-    
-    public void excluir(int id){
-        
-        try{
-            
-            String sql = "DELETE FROM Item WHERE id = ?;";
-            
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setInt(1, id);
-            stmt.execute();
-            
-            
-        }catch(SQLException ex){
-            System.out.println("Erro ao excluir Item"+ex.getMessage());
-            
-        }
-        
-        
-    }
+   
     
    public List<Item> getPessoas(){
        
@@ -158,6 +140,7 @@ public class ItemDAO {
                i.setCategoria(rs.getString("categoria"));
                i.setValor(rs.getDouble("valor"));
                i.setQuantidade(rs.getInt("quantidade"));
+               i.setDescricao(rs.getString("descricao"));
                listaItens.add(i);
            }
            return listaItens;
@@ -194,6 +177,7 @@ public class ItemDAO {
                i.setCategoria(rs.getString("categoria"));
                i.setValor(rs.getDouble("valor"));
                i.setQuantidade(rs.getInt("quantidade"));
+               i.setDescricao(rs.getString("descricao"));
                listaItens.add(i);
            }  
             return listaItens;
