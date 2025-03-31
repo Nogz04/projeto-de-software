@@ -52,6 +52,15 @@ CREATE TABLE Pedido (
 
 	id INT PRIMARY KEY AUTO_INCREMENT,
     id_mesa INT,
+
+	quantidade_comida INT,
+    quantidade_bebida INT, 
+    quantidade_sobremesa INT,
+    
+	valor_comida DOUBLE,
+	valor_bebida DOUBLE,
+	valor_sobremesa DOUBLE,
+
     id_comida INT,
     id_bebida INT,
     id_sobremesa INT,
@@ -62,19 +71,6 @@ CREATE TABLE Pedido (
     
 );
 
-
-
-
-CREATE TABLE ItemPedido (
-
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    id_Item INT NOT NULL,
-    id_Pedido INT NOT NULL,
-    quantidade INT NOT NULL,
-    FOREIGN KEY (id_Item) REFERENCES Item(id),
-	FOREIGN KEY (id_Pedido) REFERENCES Pedido(id)
-    
-);
 
 
 -- TRIGGER PARA VERIFICAR SE TEM CARNE NO ESTOQUE
