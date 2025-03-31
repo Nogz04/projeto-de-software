@@ -2,9 +2,11 @@
 
 <H2> Funcionalidade 1: </H2>
 <h3> Criar um relatório de Pesquisa dos Itens por nome; </h3> 
+<h3> Criar um filtro por nome; </h3> 
 
 <H2> Funcionalidade 2: </H2>
-<h3> Criar um filtro por nome; </h3> 
+<h3> hamburguer nao tenha quantidade - mandar null para o banco </h3> 
+<h3> deixar cinza conforme o estado (logica de desabilitação) </h3> 
 
 <H2> Funcionalidade 3: </H2>
 <H3> Criar Interface que desative/ative o item, pode implementar na de editar; 
@@ -12,3 +14,9 @@
 
 <H2> Funcionalidade 4: </H2>
 <H3> Criar interface do cliente, cardápio, enviar pro carrinho, interface carrinho, fazer pedido; </H3>
+
+
+
+
+
+
