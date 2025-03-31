@@ -1,19 +1,38 @@
-CREATE DATABASE SistemaRestaurante
-USE SistemaRestaurante
+CREATE DATABASE SistemaRestaurante2
+USE SistemaRestaurante2
 
-CREATE TABLE Item (
+CREATE TABLE Comida (
 
 	id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL UNIQUE,
-    categoria VARCHAR(50) NOT NULL,
     valor DOUBLE NOT NULL,
     quantidade INT NOT NULL,
     descricao VARCHAR(300),
-    estado BOOLEAN
+    estado VARCHAR(14) 
+);
+
+
+CREATE TABLE Bebida (
+
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL UNIQUE,
+    valor DOUBLE NOT NULL,
+    quantidade INT NOT NULL,
+    estado VARCHAR(14) 
 
 
 );
 
+CREATE TABLE Sobremesa (
+
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100) NOT NULL UNIQUE,
+    valor DOUBLE NOT NULL,
+    quantidade INT NOT NULL,
+    descricao VARCHAR(300),
+    estado VARCHAR(14) 
+
+);
 
 
 CREATE TABLE Mesa (
@@ -32,11 +51,18 @@ INSERT INTO MESA (numMesa ) VALUES (3);
 CREATE TABLE Pedido (
 
 	id INT PRIMARY KEY AUTO_INCREMENT,
-    id_mesa INT NOT NULL,
-    FOREIGN KEY (id_mesa) REFERENCES Mesa(id)
-
-
+    id_mesa INT,
+    id_comida INT,
+    id_bebida INT,
+    id_sobremesa INT,
+    FOREIGN KEY (id_mesa) REFERENCES Mesa(id),
+    FOREIGN KEY (id_comida) REFERENCES Comida(id),
+    FOREIGN KEY (id_bebida) REFERENCES Bebida(id),
+    FOREIGN KEY (id_sobremesa) REFERENCES Sobremesa(id)
+    
 );
+
+
 
 
 CREATE TABLE ItemPedido (
@@ -48,8 +74,6 @@ CREATE TABLE ItemPedido (
     FOREIGN KEY (id_Item) REFERENCES Item(id),
 	FOREIGN KEY (id_Pedido) REFERENCES Pedido(id)
     
-
-
 );
 
 
