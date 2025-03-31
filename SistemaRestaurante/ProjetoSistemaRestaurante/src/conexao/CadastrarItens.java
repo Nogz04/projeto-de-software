@@ -4,7 +4,7 @@
  */
 package conexao;
 
-import DAO.ItemDAO;
+import DAO.ComidaDAO;
 import beans.Item;
 import javax.swing.JOptionPane;
 
@@ -19,6 +19,8 @@ public class CadastrarItens extends javax.swing.JFrame {
      */
     public CadastrarItens() {
         initComponents();
+        txaDescricao.setVisible(false);
+        lblDescricao.setVisible(false);
     }
 
     /**
@@ -43,6 +45,8 @@ public class CadastrarItens extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txaDescricao = new javax.swing.JTextArea();
         lblDescricao = new javax.swing.JLabel();
+        cmbEstado = new javax.swing.JComboBox<>();
+        lblEstado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,7 +79,7 @@ public class CadastrarItens extends javax.swing.JFrame {
             }
         });
 
-        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingredientes", "Hamburguer", "Bebidas", " " }));
+        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingredientes", "Hamburguer", "Bebidas", "Sobremesa", " " }));
         cmbCategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbCategoriaActionPerformed(evt);
@@ -97,6 +101,12 @@ public class CadastrarItens extends javax.swing.JFrame {
         lblDescricao.setForeground(new java.awt.Color(153, 153, 153));
         lblDescricao.setText("Descrição");
 
+        cmbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponivel", "Indisponivel" }));
+
+        lblEstado.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblEstado.setForeground(new java.awt.Color(153, 153, 153));
+        lblEstado.setText("Estado");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -106,10 +116,6 @@ public class CadastrarItens extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblQuantidade)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnCadastrar)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,11 +130,17 @@ public class CadastrarItens extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel3)
                                         .addGap(18, 18, 18)
-                                        .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(78, 78, 78)
+                                        .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblQuantidade)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(74, 74, 74)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblDescricao)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblEstado)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(395, 395, 395)
                         .addComponent(jLabel1)))
@@ -156,10 +168,13 @@ public class CadastrarItens extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(8, 8, 8)
+                .addComponent(lblEstado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblQuantidade)
-                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(58, 58, 58)
                 .addComponent(btnCadastrar)
                 .addContainerGap(163, Short.MAX_VALUE))
@@ -188,9 +203,13 @@ public class CadastrarItens extends javax.swing.JFrame {
         i.setValor(Double.parseDouble(txtValor.getText()));
         i.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
         i.setDescricao((txaDescricao.getText()));
+        i.setEstado((String) cmbEstado.getSelectedItem());
+        
+        
+        
         
 
-        ItemDAO iDAO = new ItemDAO();
+        ComidaDAO iDAO = new ComidaDAO();
         iDAO.inserir(i);
 
         JOptionPane.showMessageDialog(null, i.getNome() + " cadastrado com sucesso!", "Notificação", JOptionPane.INFORMATION_MESSAGE);
@@ -249,11 +268,13 @@ public class CadastrarItens extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JComboBox<String> cmbCategoria;
+    private javax.swing.JComboBox<String> cmbEstado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDescricao;
+    private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblQuantidade;
     private javax.swing.JTextArea txaDescricao;

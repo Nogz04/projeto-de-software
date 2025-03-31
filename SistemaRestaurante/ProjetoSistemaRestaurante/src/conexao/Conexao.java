@@ -13,7 +13,7 @@ public class Conexao {
         try{
             
             
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/SistemaRestaurante?Timezone=true&serverTimezone=UTC", "root", "matheuszinho123");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/SistemaRestaurante2?Timezone=true&serverTimezone=UTC", "root", "laboratorio");
             
             System.out.println("Conexão realizada com sucesso!");
             return conn;

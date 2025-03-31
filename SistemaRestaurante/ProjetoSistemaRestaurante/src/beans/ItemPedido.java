@@ -11,13 +11,13 @@ package beans;
 public class ItemPedido {
     
     private int idItemPedidos;
-    private Item id_Item;
+    
     private Pedido id_Pedido;
     private int quantidade;
 
-    public ItemPedido(int idItemPedidos, Item id_Item, Pedido id_Pedido, int quantidade) {
+    public ItemPedido(int idItemPedidos, Pedido id_Pedido, int quantidade) {
         this.idItemPedidos = idItemPedidos;
-        this.id_Item = id_Item;
+        
         this.id_Pedido = id_Pedido;
         this.quantidade = quantidade;
     }
@@ -32,13 +32,7 @@ public class ItemPedido {
         this.idItemPedidos = idItemPedidos;
     }
 
-    public Item getId_Item() {
-        return id_Item;
-    }
-
-    public void setId_Item(Item id_Item) {
-        this.id_Item = id_Item;
-    }
+    
 
     public Pedido getId_Pedido() {
         return id_Pedido;
