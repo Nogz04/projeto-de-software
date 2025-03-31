@@ -8,7 +8,8 @@ CREATE TABLE Item (
     categoria VARCHAR(50) NOT NULL,
     valor DOUBLE NOT NULL,
     quantidade INT NOT NULL,
-    descricao VARCHAR(300)
+    descricao VARCHAR(300),
+    estado BOOLEAN
 
 
 );
