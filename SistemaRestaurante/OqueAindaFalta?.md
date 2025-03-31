@@ -13,7 +13,7 @@
 - (caso implemente na de editar, teremos que mudar o diagrama de caso de uso) </H3>
 
 <H2> Funcionalidade 4: </H2>
-<H3> Criar interface do cliente, cardápio, enviar pro carrinho, interface carrinho, fazer pedido; </H3>
+<H3> Criar interface do cliente, cardápio (COM FOTO), enviar pro carrinho, interface carrinho, fazer pedido; </H3>
 
 
 
