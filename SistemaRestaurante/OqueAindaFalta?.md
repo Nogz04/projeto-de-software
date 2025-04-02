@@ -18,3 +18,7 @@
 <h3>- Implementar a funcionalidade de adicionar ao carrinho.</h3>
 <h3>- Criar a interface do carrinho.</h3>
 <h3>- Implementar a funcionalidade de fazer pedido.</h3>
+
+<h2>Funcionalidade 5:</h2>
+<h3>- Não exibir se o item estiver indisponível.</h3>
+
