@@ -4,8 +4,12 @@
  */
 package conexao;
 
+import DAO.BebidaDAO;
 import DAO.ComidaDAO;
-import beans.Item;
+import DAO.SobremesaDAO;
+import beans.Bebida;
+import beans.Comida;
+import beans.Sobremesa;
 import javax.swing.JOptionPane;
 
 /**
@@ -40,22 +44,25 @@ public class CadastrarItens extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         txtValor = new javax.swing.JTextField();
         txtQuantidade = new javax.swing.JTextField();
-        cmbCategoria = new javax.swing.JComboBox<>();
+        cmbTipoItem = new javax.swing.JComboBox<>();
         btnCadastrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txaDescricao = new javax.swing.JTextArea();
         lblDescricao = new javax.swing.JLabel();
         cmbEstado = new javax.swing.JComboBox<>();
         lblEstado = new javax.swing.JLabel();
+        lblDescricao1 = new javax.swing.JLabel();
+        lblDescricao2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Itens");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel1.setText("CADASTRO DE ITENS");
 
         lblNome.setText("Nome:");
 
-        jLabel3.setText("Categoria:");
+        jLabel3.setText("Item:");
 
         lblQuantidade.setText("Quantidade:");
 
@@ -79,10 +86,10 @@ public class CadastrarItens extends javax.swing.JFrame {
             }
         });
 
-        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingredientes", "Hamburguer", "Bebidas", "Sobremesa", " " }));
-        cmbCategoria.addActionListener(new java.awt.event.ActionListener() {
+        cmbTipoItem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bebida", "Hamburguer", "Sobremesa", " " }));
+        cmbTipoItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbCategoriaActionPerformed(evt);
+                cmbTipoItemActionPerformed(evt);
             }
         });
 
@@ -107,77 +114,94 @@ public class CadastrarItens extends javax.swing.JFrame {
         lblEstado.setForeground(new java.awt.Color(153, 153, 153));
         lblEstado.setText("Estado");
 
+        lblDescricao1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblDescricao1.setForeground(new java.awt.Color(153, 153, 153));
+        lblDescricao1.setText("O que quer cadastrar?");
+
+        lblDescricao2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblDescricao2.setForeground(new java.awt.Color(153, 153, 153));
+        lblDescricao2.setText("Informações");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCadastrar)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(43, 43, 43)
-                                        .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblNome)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel3)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblQuantidade)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(74, 74, 74)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblDescricao)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblEstado)))))
+                        .addComponent(lblNome)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCadastrar)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(395, 395, 395)
-                        .addComponent(jLabel1)))
-                .addContainerGap(445, Short.MAX_VALUE))
+                        .addComponent(jLabel5)
+                        .addGap(43, 43, 43)
+                        .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblQuantidade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmbTipoItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblDescricao1)
+                    .addComponent(lblDescricao2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEstado)
+                    .addComponent(lblDescricao)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(119, 119, 119))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(331, 331, 331)
+                .addComponent(jLabel1)
+                .addContainerGap(370, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(jLabel1)
-                .addGap(71, 71, 71)
-                .addComponent(lblDescricao)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblDescricao1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(cmbTipoItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
+                        .addComponent(lblDescricao)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52)
+                        .addComponent(lblEstado)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(222, 222, 222))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblDescricao2)
+                        .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblNome)
                             .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(8, 8, 8)
-                .addComponent(lblEstado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblQuantidade)
-                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
-                .addComponent(btnCadastrar)
-                .addContainerGap(163, Short.MAX_VALUE))
+                            .addComponent(lblQuantidade)
+                            .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(44, 44, 44)
+                        .addComponent(btnCadastrar)
+                        .addGap(112, 112, 112))))
         );
 
         pack();
@@ -197,27 +221,63 @@ public class CadastrarItens extends javax.swing.JFrame {
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
 
-        Item i =  new Item();
-        i.setNome(txtNome.getText());
-        i.setCategoria((String) cmbCategoria.getSelectedItem());
-        i.setValor(Double.parseDouble(txtValor.getText()));
-        i.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
-        i.setDescricao((txaDescricao.getText()));
-        i.setEstado((String) cmbEstado.getSelectedItem());
+        
+        
+        if (cmbTipoItem.getSelectedIndex() == 0){
+            Bebida b = new Bebida();
+            b.setNome(txtNome.getText());
+            b.setValor(Double.parseDouble(txtValor.getText()));
+            b.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+            b.setEstado((String) cmbEstado.getSelectedItem());
+            
+            BebidaDAO bDAO = new BebidaDAO();
+            bDAO.inserir(b);
+            
+            JOptionPane.showMessageDialog(null, b.getNome() + " cadastrado com sucesso!", "Notificação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if (cmbTipoItem.getSelectedIndex() == 1){
+            Comida c = new Comida();
+            c.setNome(txtNome.getText());
+            c.setValor(Double.parseDouble(txtValor.getText()));
+            c.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+            c.setDescricao(txaDescricao.getText());
+            c.setEstado((String) cmbEstado.getSelectedItem());
+            
+            ComidaDAO cDAO = new ComidaDAO();
+            cDAO.inserir(c);
+            
+            JOptionPane.showMessageDialog(null, c.getNome() + " cadastrado com sucesso!", "Notificação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if (cmbTipoItem.getSelectedIndex() == 2){
+            Sobremesa s = new Sobremesa();
+            s.setNome(txtNome.getText());
+            s.setValor(Double.parseDouble(txtValor.getText()));
+            s.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+            s.setDescricao(txaDescricao.getText());
+            s.setEstado((String) cmbEstado.getSelectedItem());
+            
+            SobremesaDAO sDAO = new SobremesaDAO();
+            sDAO.inserir(s);
+            
+            JOptionPane.showMessageDialog(null, s.getNome() + " cadastrado com sucesso!", "Notificação", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Escolha um tipo de item para o cadastro.", "ERRO", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
         
         
         
         
 
-        ComidaDAO iDAO = new ComidaDAO();
-        iDAO.inserir(i);
+      
 
-        JOptionPane.showMessageDialog(null, i.getNome() + " cadastrado com sucesso!", "Notificação", JOptionPane.INFORMATION_MESSAGE);
+        
 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void cmbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriaActionPerformed
-        if (cmbCategoria.getSelectedIndex() == 1) {  
+    private void cmbTipoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoItemActionPerformed
+        if (cmbTipoItem.getSelectedIndex() == 1 || cmbTipoItem.getSelectedIndex() == 2  ) {  
             txaDescricao.setVisible(true);
             lblDescricao.setVisible(true);
             
@@ -228,7 +288,7 @@ public class CadastrarItens extends javax.swing.JFrame {
             
         }
 
-    }//GEN-LAST:event_cmbCategoriaActionPerformed
+    }//GEN-LAST:event_cmbTipoItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,13 +327,15 @@ public class CadastrarItens extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
-    private javax.swing.JComboBox<String> cmbCategoria;
     private javax.swing.JComboBox<String> cmbEstado;
+    private javax.swing.JComboBox<String> cmbTipoItem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDescricao;
+    private javax.swing.JLabel lblDescricao1;
+    private javax.swing.JLabel lblDescricao2;
     private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblQuantidade;

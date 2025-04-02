@@ -81,6 +81,11 @@ public class Comida {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    @Override
+    public String toString() {
+        return "ID: " + this.id +" " +this.nome + " - R$ " + this.valor;
+    }
     
     
    

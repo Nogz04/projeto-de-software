@@ -14,30 +14,21 @@ public class Bebida {
    private String nome;
    private double valor;
    private int quantidade;
-   private String descricao;
+   
    private String estado;
 
-    public Bebida(int id, String nome, double valor, int quantidade, String descricao) {
+    public Bebida(int id, String nome, double valor, int quantidade) {
         this.id = id;
         this.nome = nome;
         this.valor = valor;
         this.quantidade = quantidade;
-        this.descricao = descricao;
+        
     }
     
     public Bebida (){
         
         
     }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-    
     
 
     public String getNome() {
@@ -84,6 +75,9 @@ public class Bebida {
     
     
    
-   
+    @Override
+    public String toString() {
+        return this.nome + " - R$ " + this.valor;
+    }
     
 }

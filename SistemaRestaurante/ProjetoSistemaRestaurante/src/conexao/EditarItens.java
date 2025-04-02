@@ -4,8 +4,12 @@
  */
 package conexao;
 
+import DAO.BebidaDAO;
 import DAO.ComidaDAO;
-import beans.Item;
+import DAO.SobremesaDAO;
+import beans.Bebida;
+import beans.Comida;
+import beans.Sobremesa;
 import javax.swing.JOptionPane;
 
 /**
@@ -39,8 +43,6 @@ public class EditarItens extends javax.swing.JFrame {
         btnAtualizar = new javax.swing.JButton();
         lblNome = new javax.swing.JLabel();
         txtQuantidade = new javax.swing.JTextField();
-        cmbCategoria = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtValor = new javax.swing.JTextField();
@@ -51,8 +53,12 @@ public class EditarItens extends javax.swing.JFrame {
         lblDescricao = new javax.swing.JLabel();
         cmbEstado = new javax.swing.JComboBox<>();
         lblStatus = new javax.swing.JLabel();
+        lblTipoItem = new javax.swing.JLabel();
+        cmbTipoItem = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Edição de Itens");
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,15 +106,6 @@ public class EditarItens extends javax.swing.JFrame {
             }
         });
 
-        cmbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ingredientes", "Hamburguer", "Bebidas", "Sobremesa", " " }));
-        cmbCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbCategoriaActionPerformed(evt);
-            }
-        });
-
-        jLabel3.setText("Categoria:");
-
         jLabel4.setText("Quantidade:");
 
         jLabel5.setText("Valor:");
@@ -122,6 +119,7 @@ public class EditarItens extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(153, 153, 153));
         jLabel1.setText("Informe o ID do Item para consultá-lo");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 153, 153));
         jLabel2.setText("Informações do Item:");
 
@@ -137,26 +135,47 @@ public class EditarItens extends javax.swing.JFrame {
 
         lblStatus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblStatus.setForeground(new java.awt.Color(153, 153, 153));
-        lblStatus.setText("Status");
+        lblStatus.setText("Estado");
+
+        lblTipoItem.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblTipoItem.setText("Item:");
+
+        cmbTipoItem.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cmbTipoItem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bebida", "Hamburguer", "Sobremesa", " " }));
+        cmbTipoItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTipoItemActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel3.setText("Informe o tipo de Item");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(106, 106, 106)
+                        .addGap(24, 24, 24)
+                        .addComponent(lblTipoItem)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbTipoItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(45, 45, 45)
                         .addComponent(lblID)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txtConsultaIDitem, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
+                                .addGap(18, 18, 18)
                                 .addComponent(btnConsultarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1)))
+                            .addComponent(jLabel1))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addGroup(layout.createSequentialGroup()
@@ -167,15 +186,10 @@ public class EditarItens extends javax.swing.JFrame {
                                 .addComponent(lblNome)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(txtQuantidade))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addGap(18, 18, 18)
@@ -185,65 +199,58 @@ public class EditarItens extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblDescricao)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(216, 216, 216))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(412, 412, 412)
-                    .addComponent(lblStatus)
-                    .addContainerGap(412, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblStatus))
+                        .addGap(216, 216, 216))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnConsultarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtConsultaIDitem, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblID))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(80, 80, 80)
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnConsultarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtConsultaIDitem, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblID))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblTipoItem)
+                            .addComponent(cmbTipoItem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)))
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblDescricao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblMostrarID)
                             .addComponent(txtMostrarIDitem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
+                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblNome)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblDescricao)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
+                            .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblStatus)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
+                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(36, 36, 36)
                 .addComponent(btnAtualizar)
-                .addContainerGap(172, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(326, 326, 326)
-                    .addComponent(lblStatus)
-                    .addContainerGap(327, Short.MAX_VALUE)))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
 
         pack();
@@ -255,26 +262,63 @@ public class EditarItens extends javax.swing.JFrame {
 
     private void btnConsultarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarItemActionPerformed
 
-        ComidaDAO iDAO = new ComidaDAO();
-        int id = Integer.parseInt(txtConsultaIDitem.getText());
-
-        Item i = iDAO.consulta(id);
-
-        if(i == null){
-            limparFormulario();
-            JOptionPane.showMessageDialog(this, "Item não encontrado");
-        }
-        else{
-            txtMostrarIDitem.setText(String.valueOf(i.getId()));
-            txtNome.setText(i.getNome());
-            cmbCategoria.setSelectedItem(i.getCategoria());
-            txtValor.setText(String.valueOf(i.getValor()));
-            txtQuantidade.setText(String.valueOf(i.getQuantidade()));
-            txaDescricao.setText(i.getDescricao());
-            cmbEstado.setSelectedItem(i.getEstado());
+        if(cmbTipoItem.getSelectedIndex() == 0){
+            BebidaDAO bDAO = new BebidaDAO();
+            int id = Integer.parseInt(txtConsultaIDitem.getText());
+            Bebida b = bDAO.consulta(id);
             
-
+            if(b == null){
+            limparFormulario();
+            JOptionPane.showMessageDialog(this, "Bebida não encontrada");
         }
+         else{
+            txtMostrarIDitem.setText(String.valueOf(b.getId()));
+            txtNome.setText(b.getNome());
+            txtValor.setText(String.valueOf(b.getValor()));
+            txtQuantidade.setText(String.valueOf(b.getQuantidade()));
+            cmbEstado.setSelectedItem(b.getEstado());
+            }
+        }
+        else if(cmbTipoItem.getSelectedIndex() == 1){
+            ComidaDAO cDAO = new ComidaDAO();
+            int id = Integer.parseInt(txtConsultaIDitem.getText());
+            Comida c = cDAO.consulta(id);
+            
+            if(c == null){
+            limparFormulario();
+            JOptionPane.showMessageDialog(this, "Comida não encontrada");
+            }
+         else{
+            txtMostrarIDitem.setText(String.valueOf(c.getId()));
+            txtNome.setText(c.getNome());
+            txtValor.setText(String.valueOf(c.getValor()));
+            txtQuantidade.setText(String.valueOf(c.getQuantidade()));
+            txaDescricao.setText(c.getDescricao());
+            cmbEstado.setSelectedItem(c.getEstado());
+            }
+        }
+        else if(cmbTipoItem.getSelectedIndex() == 2){
+            SobremesaDAO sDAO = new SobremesaDAO();
+            int id = Integer.parseInt(txtConsultaIDitem.getText());
+            Sobremesa s = sDAO.consulta(id);
+            
+            if(s == null){
+            limparFormulario();
+            JOptionPane.showMessageDialog(this, "Sobremesa não encontrada");
+            }
+         else{
+            txtMostrarIDitem.setText(String.valueOf(s.getId()));
+            txtNome.setText(s.getNome());
+            txtValor.setText(String.valueOf(s.getValor()));
+            txtQuantidade.setText(String.valueOf(s.getQuantidade()));
+            txaDescricao.setText(s.getDescricao());
+            cmbEstado.setSelectedItem(s.getEstado());
+            }
+        }
+        
+        
+        
+        
 
     }//GEN-LAST:event_btnConsultarItemActionPerformed
 
@@ -284,23 +328,60 @@ public class EditarItens extends javax.swing.JFrame {
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
 
+          
         
-        Item i = new Item();
+        if (cmbTipoItem.getSelectedIndex() == 0){
+            Bebida b = new Bebida();
+            b.setId(Integer.parseInt(txtMostrarIDitem.getText()));
+            b.setNome(txtNome.getText());
+            b.setValor(Double.parseDouble(txtValor.getText()));
+            b.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+            b.setEstado(cmbEstado.getSelectedItem()+"");
+            
+            BebidaDAO bDAO = new BebidaDAO();
+            bDAO.atualizar(b);
+            
+            JOptionPane.showMessageDialog(this, "Bebida " + b.getNome() + " atualizada com sucesso!", "Atualização concluída.", JOptionPane.INFORMATION_MESSAGE);
+            
+            limparFormulario();
+        }
+        else if (cmbTipoItem.getSelectedIndex() == 1){
+            Comida c = new Comida();
+            c.setId(Integer.parseInt(txtMostrarIDitem.getText()));
+            c.setNome(txtNome.getText());
+            c.setValor(Double.parseDouble(txtValor.getText()));
+            c.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+            c.setDescricao(txaDescricao.getText());
+            c.setEstado(cmbEstado.getSelectedItem()+"");
+            
+            ComidaDAO cDAO = new ComidaDAO();
+            cDAO.atualizar(c);
+            
+            JOptionPane.showMessageDialog(this, "Comida " + c.getNome() + " atualizada com sucesso!", "Atualização concluída.", JOptionPane.INFORMATION_MESSAGE);
+            
+            limparFormulario();
+        }
+        else if (cmbTipoItem.getSelectedIndex() == 2){
+            Sobremesa s = new Sobremesa();
+            s.setId(Integer.parseInt(txtMostrarIDitem.getText()));
+            s.setNome(txtNome.getText());
+            s.setValor(Double.parseDouble(txtValor.getText()));
+            s.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
+            s.setDescricao(txaDescricao.getText());
+            s.setEstado(cmbEstado.getSelectedItem()+"");
+            
+            SobremesaDAO sDAO = new SobremesaDAO();
+            sDAO.atualizar(s);
+            
+            JOptionPane.showMessageDialog(this, "Sobremesa " + s.getNome() + " atualizada com sucesso!", "Atualização concluída.", JOptionPane.INFORMATION_MESSAGE);
+            
+            limparFormulario();
+        }
+        else{
         
-        i.setId(Integer.parseInt(txtMostrarIDitem.getText()));
-        i.setNome(txtNome.getText());
-        i.setCategoria(cmbCategoria.getSelectedItem()+"");  //i.setCategoria(cmbCateogira.getSelectedItem().toString());
-        i.setValor(Double.parseDouble(txtValor.getText()));
-        i.setQuantidade(Integer.parseInt(txtQuantidade.getText()));
-        i.setDescricao(txaDescricao.getText());
-      
-
+            JOptionPane.showMessageDialog(this, "Não foi possível completar a atualização dos dados.", "Erro", JOptionPane.ERROR);
         
-        
-        ComidaDAO iDAO = new ComidaDAO();
-        iDAO.atualizar(i);
-
-        limparFormulario();
+        }
 
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
@@ -310,7 +391,6 @@ public class EditarItens extends javax.swing.JFrame {
         txtNome.setText("");
         txtQuantidade.setText("");
         txtValor.setText("");
-        cmbCategoria.setSelectedIndex(0);
         txaDescricao.setText("");
        
     }
@@ -324,17 +404,18 @@ public class EditarItens extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtValorActionPerformed
 
-    private void cmbCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCategoriaActionPerformed
-        if (cmbCategoria.getSelectedIndex() == 1) {  
+    private void cmbTipoItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoItemActionPerformed
+        if (cmbTipoItem.getSelectedIndex() == 1 || cmbTipoItem.getSelectedIndex() == 2  ) {
             txaDescricao.setVisible(true);
             lblDescricao.setVisible(true);
-            
+
         }
         else{
             txaDescricao.setVisible(false);
             lblDescricao.setVisible(false);
+
         }
-    }//GEN-LAST:event_cmbCategoriaActionPerformed
+    }//GEN-LAST:event_cmbTipoItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -374,8 +455,8 @@ public class EditarItens extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnConsultarItem;
-    private javax.swing.JComboBox<String> cmbCategoria;
     private javax.swing.JComboBox<String> cmbEstado;
+    private javax.swing.JComboBox<String> cmbTipoItem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -387,6 +468,7 @@ public class EditarItens extends javax.swing.JFrame {
     private javax.swing.JLabel lblMostrarID;
     private javax.swing.JLabel lblNome;
     private javax.swing.JLabel lblStatus;
+    private javax.swing.JLabel lblTipoItem;
     private javax.swing.JTextArea txaDescricao;
     private javax.swing.JTextField txtConsultaIDitem;
     private javax.swing.JTextField txtMostrarIDitem;
