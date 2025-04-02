@@ -83,7 +83,10 @@ public class Sobremesa {
     }
     
     
-   
+    @Override
+    public String toString() {
+        return this.nome + " - R$ " + this.valor;
+    }
    
     
 }

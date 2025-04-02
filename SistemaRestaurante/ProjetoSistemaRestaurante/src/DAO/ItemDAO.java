@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  *
- * @author mathe
+ * @author gilberto, matheus e romeo.
  */
 public class ItemDAO {
     

@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package beans;
 
-/**
- *
- * @author laboratorio
- */
 public class Mesa {
     
     private int id;
@@ -16,6 +9,10 @@ public class Mesa {
     public Mesa(int id, int numMesa) {
         this.id = id;
         this.numMesa = numMesa;
+    }
+    
+    public Mesa(){
+        
     }
     
     public int getId() {
@@ -35,8 +32,8 @@ public class Mesa {
     }
 
 
-    
-    
-   
-    
+    @Override
+    public String toString() {
+        return numMesa + "";
+    }    
 }

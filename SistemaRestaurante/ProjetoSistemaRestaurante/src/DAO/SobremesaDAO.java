@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  *
- * @author mathe
+ * @author gilberto, matheus e romeo.
  */
 public class SobremesaDAO {
     
@@ -155,7 +155,7 @@ public class SobremesaDAO {
    }
    
    
-   public List<Sobremesa> getComidasNome(String nome){
+   public List<Sobremesa> getSobremesasNome(String nome){
         
         String sql = "SELECT * FROM Sobremesa WHERE nome LIKE ?;";
         
@@ -167,7 +167,7 @@ public class SobremesaDAO {
             stmt.setString(1, "%"+ nome +"%");
             
             ResultSet rs = stmt.executeQuery();
-            List<Sobremesa> listaItens = new ArrayList();
+            List<Sobremesa> listaSobremesas = new ArrayList();
             
             
             
@@ -179,9 +179,9 @@ public class SobremesaDAO {
                c.setQuantidade(rs.getInt("quantidade"));
                c.setDescricao(rs.getString("descricao"));
                c.setEstado(rs.getString("estado"));
-               listaItens.add(c);
+               listaSobremesas.add(c);
            }  
-            return listaItens;
+            return listaSobremesas;
             
         }catch(SQLException ex){
             System.out.println("Erro ao consultar todas as sobremesas"+ex.getMessage());

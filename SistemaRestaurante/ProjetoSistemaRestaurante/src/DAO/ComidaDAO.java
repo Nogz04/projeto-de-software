@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  *
- * @author mathe
+ * @author gilberto, matheus e romeo.
  */
 public class ComidaDAO {
     
@@ -38,7 +38,7 @@ public class ComidaDAO {
     //Criando o INSERT INTO do SQL.
     public void inserir(Comida Comida){
         
-        String sql = "INSERT INTO Item (nome, valor, quantidade, descricao, estado) VALUES (?,?,?,?,?);";
+        String sql = "INSERT INTO Comida (nome, valor, quantidade, descricao, estado) VALUES (?,?,?,?,?);";
         
         
         try {
@@ -58,14 +58,14 @@ public class ComidaDAO {
             stmt.execute(); //Isso executa o comando SQL, inserindo o registro no banco de dados
             
         }catch(SQLException ex){
-            System.out.println("Erro ao inserir item "+ex.getMessage());
+            System.out.println("Erro ao inserir Comida "+ex.getMessage());
         }
         
     }
     
     public Comida consulta(int id){
         
-        String sql = "SELECT * FROM Item WHERE id = ?;";
+        String sql = "SELECT * FROM Comida WHERE id = ?;";
         
         
         try {
@@ -89,7 +89,7 @@ public class ComidaDAO {
             return c;
             
         }catch(SQLException ex){
-            System.out.println("Erro ao consultar dados do Item"+ex.getMessage());
+            System.out.println("Erro ao consultar dados da Comida"+ex.getMessage());
             return null;
         }
     }
@@ -97,7 +97,7 @@ public class ComidaDAO {
     
     public void atualizar(Comida comida){
         
-        String sql = "UPDATE item set nome = ?, valor = ?, quantidade = ?, descricao = ?, estado = ? WHERE id = ?;";
+        String sql = "UPDATE Comida set nome = ?, valor = ?, quantidade = ?, descricao = ?, estado = ? WHERE id = ?;";
         
         try {
             
@@ -116,7 +116,7 @@ public class ComidaDAO {
             
             
         }catch(SQLException ex){
-            System.out.println("Erro ao atualizar os dados da pessoa"+ex.getMessage());
+            System.out.println("Erro ao atualizar os dados da Comida"+ex.getMessage());
             
         }
     }
@@ -125,7 +125,7 @@ public class ComidaDAO {
     
    public List<Comida> getComidas(){
        
-       String sql = "SELECT * FROM Item";
+       String sql = "SELECT * FROM Comida";
        
        try{
            
@@ -148,7 +148,7 @@ public class ComidaDAO {
            
            
        }catch(SQLException ex){
-           System.out.println("Erro ao consultar todos os itens: " + ex.getMessage());
+           System.out.println("Erro ao consultar todos as comidas: " + ex.getMessage());
            return null;
        }
        
@@ -157,7 +157,7 @@ public class ComidaDAO {
    
    public List<Comida> getComidasNome(String nome){
         
-        String sql = "SELECT * FROM pessoa WHERE nome LIKE ?;";
+        String sql = "SELECT * FROM Comida WHERE nome LIKE ?;";
         
         try {
             
@@ -167,7 +167,7 @@ public class ComidaDAO {
             stmt.setString(1, "%"+ nome +"%");
             
             ResultSet rs = stmt.executeQuery();
-            List<Comida> listaItens = new ArrayList();
+            List<Comida> listaComidas = new ArrayList();
             
             
             
@@ -179,12 +179,12 @@ public class ComidaDAO {
                c.setQuantidade(rs.getInt("quantidade"));
                c.setDescricao(rs.getString("descricao"));
                c.setEstado(rs.getString("estado"));
-               listaItens.add(c);
+               listaComidas.add(c);
            }  
-            return listaItens;
+            return listaComidas;
             
         }catch(SQLException ex){
-            System.out.println("Erro ao consultar todos os Itens"+ex.getMessage());
+            System.out.println("Erro ao consultar todas as comidas"+ex.getMessage());
             return null;
         }
     }
