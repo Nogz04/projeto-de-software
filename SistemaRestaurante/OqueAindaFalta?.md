@@ -25,6 +25,7 @@
 <h2>Funcionalidade 6:</h2>
 <h3>- Não exibir no IniciarPedidos se o item estiver indisponível. Deixar cinza conforme o estado (lógica de desabilitação).</h3>
 <h3>- Clear carrinho ao fechar pedido.</h3>
+<h3>- Ordenar tabela cardápio por odem alfabetica e por onde de estado.</h3>
 
 <h2>Funcionalidade 7:</h2>
 <h3>- Sockets para 4 acessos.</h3.
