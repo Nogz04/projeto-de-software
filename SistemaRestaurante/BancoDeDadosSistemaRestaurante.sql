@@ -3,7 +3,7 @@ USE SistemaRestaurante2
 
 CREATE TABLE Comida (
 
-	id INT PRIMARY KEY AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL UNIQUE,
     valor DOUBLE NOT NULL,
     quantidade INT NOT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE Comida (
 
 CREATE TABLE Bebida (
 
-	id INT PRIMARY KEY AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL UNIQUE,
     valor DOUBLE NOT NULL,
     quantidade INT NOT NULL,
@@ -25,7 +25,7 @@ CREATE TABLE Bebida (
 
 CREATE TABLE Sobremesa (
 
-	id INT PRIMARY KEY AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL UNIQUE,
     valor DOUBLE NOT NULL,
     quantidade INT NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE Sobremesa (
 
 CREATE TABLE Mesa (
 
-	id INT PRIMARY KEY AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     numMesa INT NOT NULL UNIQUE
 
 
@@ -50,10 +50,12 @@ INSERT INTO MESA (numMesa ) VALUES (3);
 
 CREATE TABLE Pedido (
 
-	id INT PRIMARY KEY AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     id_mesa INT,
-
-	quantidade_comida INT,
+    ValorTotalPagarConta DOUBLE,
+    
+	
+    quantidade_comida INT,
     quantidade_bebida INT, 
     quantidade_sobremesa INT,
     
