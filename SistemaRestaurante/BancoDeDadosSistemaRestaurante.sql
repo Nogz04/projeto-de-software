@@ -1,5 +1,5 @@
-CREATE DATABASE SistemaRestaurante2
-USE SistemaRestaurante2
+CREATE DATABASE SistemaRestaurante2;
+USE SistemaRestaurante2;
 
 CREATE TABLE Comida (
 
@@ -9,6 +9,7 @@ CREATE TABLE Comida (
     quantidade INT NOT NULL,
     descricao VARCHAR(300),
     estado VARCHAR(14) 
+    
 );
 
 
@@ -19,7 +20,6 @@ CREATE TABLE Bebida (
     valor DOUBLE NOT NULL,
     quantidade INT NOT NULL,
     estado VARCHAR(14) 
-
 
 );
 
@@ -39,8 +39,7 @@ CREATE TABLE Mesa (
 
 	id INT PRIMARY KEY AUTO_INCREMENT,
     numMesa INT NOT NULL UNIQUE
-
-
+    
 );
 
 INSERT INTO MESA (numMesa ) VALUES (1);
@@ -71,34 +70,48 @@ CREATE TABLE Pedido (
     
 );
 
-
-
--- TRIGGER PARA VERIFICAR SE TEM CARNE NO ESTOQUE
-
 DELIMITER //
 
-CREATE TRIGGER verifica_quantidade_carne
-BEFORE INSERT ON ItemPedido
+CREATE TRIGGER before_insert_pedido
+BEFORE INSERT ON Pedido
 FOR EACH ROW
 BEGIN
-    DECLARE item_nome VARCHAR(100);
-    DECLARE item_categoria VARCHAR(50);
-    DECLARE item_quantidade INT;
-    
-    -- Obter informações do item que está sendo adicionado ao pedido
-    SELECT nome, categoria, quantidade INTO item_nome, item_categoria, item_quantidade
-    FROM Item
-    WHERE id = NEW.id_Item;
-    
-    -- Verificar se é carne da categoria ingrediente com quantidade zero
-    IF item_nome = 'carne' AND item_categoria = 'ingrediente' AND item_quantidade <= 0 THEN
-        SIGNAL SQLSTATE '45000' 
-        SET MESSAGE_TEXT = 'Não é possível adicionar carne ao pedido: quantidade em estoque esgotada';
-    END IF;
-END//
+    DECLARE comida_estado VARCHAR(14);
+    DECLARE bebida_estado VARCHAR(14);
+    DECLARE sobremesa_estado VARCHAR(14);
 
+    -- Verifica o estado da comida
+    IF NEW.id_comida IS NOT NULL THEN
+        SELECT estado INTO comida_estado FROM Comida WHERE id = NEW.id_comida;
+        IF comida_estado = 'Indisponivel' THEN
+            SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Erro: Comida desativada não pode ser adicionada ao pedido.';
+        END IF;
+    END IF;
+
+    -- Verifica o estado da bebida
+    IF NEW.id_bebida IS NOT NULL THEN
+        SELECT estado INTO bebida_estado FROM Bebida WHERE id = NEW.id_bebida;
+        IF bebida_estado = 'Indisponivel' THEN
+            SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Erro: Bebida desativada não pode ser adicionada ao pedido.';
+        END IF;
+    END IF;
+
+    -- Verifica o estado da sobremesa
+    IF NEW.id_sobremesa IS NOT NULL THEN
+        SELECT estado INTO sobremesa_estado FROM Sobremesa WHERE id = NEW.id_sobremesa;
+        IF sobremesa_estado = 'Indisponivel' THEN
+            SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Erro: Sobremesa desativada não pode ser adicionada ao pedido.';
+        END IF;
+    END IF;
+    
+END;
+
+//
 DELIMITER ;
 
+DROP TRIGGER before_insert_pedido
 
-
-SELECT * FROM ITEM
+SELECT * FROM COMIDA
