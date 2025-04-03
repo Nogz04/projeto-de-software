@@ -29,6 +29,6 @@
 <h3>- Ordenar tabela cardápio por odem alfabetica e por onde de estado.</h3>
 
 <h2>Funcionalidade 7:</h2>
-<h3>- Sockets para 4 acessos.</h3..
+<h3>- Sockets para 4 acessos.</h3>
 <h3>- Enviar Resumo da conta para um arquivo csv.</h3>
 
