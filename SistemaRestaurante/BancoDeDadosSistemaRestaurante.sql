@@ -50,11 +50,12 @@ INSERT INTO MESA (numMesa ) VALUES (3);
 CREATE TABLE Pedido (
 
 	id INT PRIMARY KEY AUTO_INCREMENT,
-    id_mesa INT,
+    	id_mesa INT,
+	ValorTotalPagarConta DOUBLE,
 
 	quantidade_comida INT,
-    quantidade_bebida INT, 
-    quantidade_sobremesa INT,
+    	quantidade_bebida INT, 
+    	quantidade_sobremesa INT,
     
 	valor_comida DOUBLE,
 	valor_bebida DOUBLE,
