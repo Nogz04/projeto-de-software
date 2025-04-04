@@ -13,26 +13,26 @@
 
 <h2>Funcionalidade 4:</h2>
 <h3>- Criar a interface do cliente. ✅</h3>
-<h3>- Criar a interface do cardápio (com foto).</h3>
+<h3>- Criar a interface do cardápio (com foto e descrição).</h3>
 <h3>- Implementar a funcionalidade de adicionar ao carrinho. ✅</h3>
 <h3>- Criar a interface do carrinho. ✅</h3>
 <h3>- Implementar a funcionalidade de fazer pedido. ✅</h3>
 <h3>- Limpar formulário de cadastro. ✅ </h3>
 
 <h2>Funcionalidade 5:</h2>
-<h3>- Exibir Total do pedido.</h3>
-<h3>- Exibir Total Final.</h3>
+<h3>- Exibir Resumo Total do pedido. ✅</h3>
+<h3>- Exibir Total Final. ✅</h3>
 
 <h2>Funcionalidade 6:</h2>
-<h3>- Não exibir no IniciarPedidos se o item estiver indisponível. Deixar cinza conforme o estado (lógica de desabilitação).</h3>
+<h3>- Não exibir no IniciarPedidos se o item estiver indisponível. Deixar cinza conforme o estado (lógica de desabilitação) OU
+  não permitir adicionar ao carrinho.</h3>
 <h3>- Clear carrinho ao fechar pedido. ✅</h3>
 <h3>- Botao Clear Carrinho. ✅</h3>
 <h3>- Ordenar tabela cardápio por odem alfabetica e por onde de estado. ✅</h3>
 
 <h2>Funcionalidade 7:</h2>
 <h3>- Sockets para 4 acessos.</h3>
-<h3>- Enviar Resumo da conta para um arquivo csv.</h3>
+<h3>- Fechar Conta e Enviar Resumo da conta para um arquivo csv.</h3>
 <h3>- Notificação enviado para o carrinho. </h3>
-<h3>- Fechar Conta. </h3>
 <h3>- FazerPedido tem que aceitar quantidade nula, porem tem que selecionar algum item (mas não obrigatoriamente todos). ✅</h3>
 
