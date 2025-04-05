@@ -6,7 +6,8 @@
 
 <h2>1- Diagrama de Caso de Uso</h2>
 
-![image](https://github.com/user-attachments/assets/e20aaa9b-2028-4ac9-838b-d4fbe0193a9c)
+![image](https://github.com/user-attachments/assets/a9517420-60a3-46c8-b2e8-b5ed97e32168)
+
 
 
 
@@ -50,9 +51,21 @@
 ![image](https://github.com/user-attachments/assets/009979c4-805e-4d95-b2d4-4a164102eeb1)
 
 
-<h2>Diagrama de Classe</h2>
+<h2>Diagrama de Classe - Funcionario/Gerente</h2>
 
-![image](https://github.com/user-attachments/assets/aafa3045-7881-46f6-a333-628401d70bf6)
+<h3>Cadastro de Itens / Edição Itens - Interfaces</h3>
+
+![image](https://github.com/user-attachments/assets/cb0e2011-29ca-4d5c-8201-e357a7b563d0)
+
+<h3>Conexão com Banco de Dados</h3>
+
+![image](https://github.com/user-attachments/assets/22e25bbf-e965-4ea9-9138-150a1b0b1434)
+
+
+
+
+
+
 
 
 
