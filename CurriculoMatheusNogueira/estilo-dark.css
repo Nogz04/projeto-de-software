@@ -1,0 +1,168 @@
+/* Tema Escuro */
+
+table, th, td {
+    border: 2px solid #444444; /* Cor da borda mais suave para o tema escuro */
+    padding: 6px;
+    text-align: left;
+    color: #ffffff; /* Texto branco para o tema escuro */
+}
+
+body {
+    font-family: "Agency FB", sans-serif;
+    color: #ffffff; /* Cor do texto em branco */
+    background-color: #121212; /* Cor de fundo escura */
+}
+
+.estiloDevJunior{
+    color: white; 
+    text-decoration: underline
+}
+
+
+.botaoEnviar{
+
+    border-radius: 5px;
+    background-color: #0b9700;
+    padding: 5px;
+    color: white;
+    cursor: pointer;
+
+
+}
+
+.botaoEnviar:hover{
+
+    background-color: #085e01;
+    
+
+}
+
+h2 {
+    color: #ffffff; /* Cor do texto em branco */
+}
+
+p {
+    color: #ffffff; /* Cor do texto em branco */
+    font-size: 20px;
+}
+
+ul, li {
+    font-size: 23px;
+    color: #ffffff; /* Texto branco para o tema escuro */
+    font-family: "Agency FB", sans-serif;
+}
+
+ul li:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    color: #4a90e2; /* Cor do texto ao passar o mouse */
+}
+
+th {
+    color: #9c27b0; /* Cor das cabeçalhos (roxos) */
+}
+
+table {
+    color: #ffffff; /* Cor do texto na tabela */
+    background-color: #333333; /* Fundo mais escuro para a tabela */
+}
+
+table th:hover, tr:hover, td:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    background-color: #555555; /* Fundo de hover nas linhas */
+}
+
+.subtitulos {
+    border: #ffffff 5px solid;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: inline-block;
+    margin-bottom: 0px;
+    text-decoration: none;
+    padding: 3px;
+    color: #ffffff; /* Texto branco */
+    background-color: #6a1b9a; /* Roxo escuro */
+}
+
+.subtitulos:hover {
+    background-color: #9c27b0; /* Roxo mais claro */
+    cursor: pointer;
+}
+
+.destaque {
+    color: #0b9700;
+    background-color: #333333; /* Cor de fundo escura */
+    font-weight: bold;
+    font-family: 'Bell MT';
+    display: inline-block;
+    margin-top: 0px;
+}
+
+.titulo {
+    background-color: #6a1b9a; /* Cor de fundo roxa */
+    color: #ffffff; /* Texto branco */
+    border-bottom-right-radius: 20px;
+    width: fit-content;
+    padding: 10px 10px;
+    margin-left: -7px;
+    border: white 2px solid;
+}
+
+#fotoPerfil {
+    width: 130px;
+    height: 130px;
+    border-radius: 100%;
+    border: 3px solid #ffffff; /* Borda branca */
+}
+
+.botaoVoltarTopo {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid #ffffff;
+    background-color: #6a1b9a; /* Roxo escuro */
+    color: #ffffff; /* Texto branco */
+    font-size: 18px;
+    margin-top: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Bell MT';
+}
+
+.botaoVoltarTopo:hover {
+    background-color: #4a0080; /* Roxo mais escuro no hover */
+}
+
+.tirarMarcacaoLista {
+    list-style-type: none;
+    margin-left: -25px;
+    font-size: 30px;
+}
+
+.subtituloNomeEmail {
+    font-weight: bold;
+    font-family: Arial;
+    font-size: 15px;
+    color: #ffffff; /* Cor de texto branco */
+}
+
+.formularioText {
+    border: 3px solid #444444; /* Cor da borda mais suave */
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #333333; /* Fundo escuro */
+    color: #ffffff; /* Texto branco */
+}
+
+.formularioSelect {
+    border: 3px solid #444444; /* Cor da borda mais suave */
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #333333; /* Fundo escuro */
+    color: #ffffff; /* Texto branco */
+    font-weight: bold;
+}
