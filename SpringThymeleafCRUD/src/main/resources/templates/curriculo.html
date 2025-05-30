@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Curriculo Matheus Nogueira</title>
+
+  <link rel="stylesheet" href="/static/style.css">
+
+</head>
+<body style="background-image: url('/templates/FundoOFC.png'); background-size: cover; background-repeat: no-repeat; background-position: center; background-attachment: fixed;">
+
+
+<h1 class="titulo" id="topo">CV - Matheus Nogueira Albuquerque</h1>
+
+<h1 style="color:#ffffff; text-decoration: underline"> Desenvolvedor Júnior</h1>
+<img id="fotoPerfil" src="/templates/eu-terno.png" alt="Foto Matheus">
+
+
+<br>
+<h2 class="subtitulos"> Biografia: </h2>
+<p style="font-family: 'Bell MT'; margin-bottom: 0px"> Me chamo Matheus Nogueira Albuquerque e sou estudante de Ciência da Computação. <br>
+<p class="destaque">Gosto muito de programar, jogar jogos e assistir futebol.</p>
+
+<br>
+
+<h2 class="subtitulos"> Lista de Habilidades:</h2>
+<ul class="tirarMarcacaoLista">
+  <li>Java</li>
+  <li>SQL</li>
+  <li>Python</li>
+  <li>C</li>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JS</li>
+</ul>
+
+<h2 class="subtitulos"> Contatos e Redes sociais: </h2>
+<ul class="tirarMarcacaoLista">
+
+  <li >
+
+    <a href="https://www.instagram.com/matheus_nogueira.a/">
+
+      <img style="border-radius: 1%; height: 3%; width: 3%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1024px-Instagram_logo_2022.svg.png">
+
+    </a>
+
+  </li>
+
+  <li>
+
+    <a href="https://www.linkedin.com/in/matheus-nogueira-albuquerque-14abb5275/">
+
+      <img style="border-radius: 5%; height: 3%; width: 3%" src="https://store-images.s-microsoft.com/image/apps.46485.9007199266245564.44dc7699-748d-4c34-ba5e-d04eb48f7960.df3dbdf7-e6b9-4d2a-a5ad-3b91e430d172" >
+
+    </a>
+
+
+  </li>
+
+  <li>
+
+    <a>
+      <img style="border-radius: 6%; height: 3%; width: 3%" src="https://avatars1.githubusercontent.com/u/9919?v=4" >
+
+    </a>
+
+  </li>
+
+  <li>
+
+    <a href="mailto:matheus.nalbuquerque@ufn.edu.br" style="display: flex; display: block">
+
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Gmail_2020.png" style="width: 3%; height: 3%">
+      <button onclick="document.location= 'https://mail.google.com/mail/u/0/'" style="padding: 3px; margin-left: 7px; cursor: pointer"> Ir agora</button>
+
+    </a>
+
+  </li>
+</ul>
+
+<br>
+<h2 class="subtitulos">Nível de Habilidades</h2> <br> <br>
+<table style="font-size: 17px">
+  <th>Habilidades</th>
+  <th>Nível</th>
+  <th>Experiência</th>
+
+  <tr>
+
+    <td>Python</td>
+    <td>3/5</td>
+    <td>1 ano</td>
+
+  </tr>
+
+  <tr>
+
+    <td>Java</td>
+    <td>4,5/5</td>
+    <td>3 anos</td>
+
+  </tr>
+
+  <tr>
+
+    <td>SQL</td>
+    <td>4/5</td>
+    <td>2 anos</td>
+
+  </tr>
+
+  <tr>
+
+    <td>HTML</td>
+    <td>4/5</td>
+    <td>2 anos</td>
+
+  </tr>
+
+  <tr>
+
+    <td>CSS</td>
+    <td>4/5</td>
+    <td>2 anos</td>
+
+  </tr>
+
+  <tr>
+
+    <td>JS</td>
+    <td>2/5</td>
+    <td>1 mês</td>
+
+  </tr>
+
+</table>
+
+<br>
+<h2 class="subtitulos">Formulário de Contato</h2> <br> <br>
+
+<form action="/processarFormulario" method="post">
+
+  <label for="nome" class="subtituloNomeEmail">Nome:</label> <br>
+  <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required class="formularioText"> <br>
+
+  <label for="email" class="subtituloNomeEmail">Email:</label> <br>
+  <input type="email" id="email" name="email" placeholder="Digite seu email" required class="formularioText"> <br>
+
+  <label for="curso" class="subtituloNomeEmail">Curso de Interesse:</label> <br>
+  <select id="curso" name="curso" required class="formularioSelect">
+
+    <option value = "CC">Ciência da Computação</option>
+    <option value = "JD">Jogos Digitais</option>
+    <option value = "SI">Sistemas de Informação</option>
+    <option value = "ARQ">Arquitetura de Urbanismo</option>
+    <option value = "DIR">Direito</option>
+    <option value = "MED">Medicina</option>
+    <option value = "ODONTO">Odontologia</option>
+    <option value = "ENGCIVIL">Engenharia Civil</option>
+
+  </select> <br> <br>
+
+  <p class="corBranca">Gênero:</p>
+  <input type="radio" id="masc" name="genero" value="masculino">
+  <label for="masc" class="corBranca">Masculino</label>
+  <input type="radio" id="fem" name="genero" value="feminino">
+  <label for="fem" class="corBranca">Feminino</label><br><br>
+
+</form>
+
+<p>Interesses:</p>
+<input type="checkbox" id="html" name="interesses" value="HTML">
+<label for="html">HTML</label>
+<input type="checkbox" id="css" name="interesses" value="CSS">
+<label for="css">CSS</label><br><br>
+
+<label for="mensagem">Mensagem:</label><br>
+<textarea id="mensagem" name="mensagem" rows="4" cols="40"></textarea><br><br>
+
+<input type="submit" value="Enviar">
+
+
+<a href="#topo">
+
+  <button class="botaoVoltarTopo">Voltar ao topo</button>
+
+</a>
+
+</body>
+</html>
