@@ -10,7 +10,7 @@ table, th, td {
 body {
     font-family: "Agency FB", sans-serif;
     color: #222222; /* Texto escuro */
-    background-color: #f5f5f5; /* Fundo claro */
+    background-color: #FAF0E6; /* Fundo claro */
 }
 
 .estiloDevJunior{
@@ -28,10 +28,29 @@ body {
 }
 
 
+
 .botaoEnviar:hover{
 
     background-color: #085e01;
     
+
+}
+
+.botaoTemaClaro{
+
+    border: black 1px solid;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    margin-right: 5px;
+
+}
+
+.divTemas{
+
+    display: flex;
+    justify-content: flex-end;
+
 
 }
 
@@ -115,12 +134,12 @@ table th:hover, tr:hover, td:hover {
 }
 
 .botaoVoltarTopo {
-    padding: 10px;
+    padding: 5px;
     border-radius: 10px;
-    border: 2px solid #222222;
-    background-color: #bb86fc; /* Roxo claro */
-    color: #222222; /* Texto escuro */
-    font-size: 18px;
+    border: 2px solid #000000;
+    background-color: #6a1b9a; /* Roxo escuro */
+    color: #ffffff; /* Texto branco */
+    font-size: 15px;
     margin-top: 30px;
     cursor: pointer;
     font-weight: bold;
@@ -141,7 +160,7 @@ table th:hover, tr:hover, td:hover {
     font-weight: bold;
     font-family: Arial;
     font-size: 15px;
-    color: #222222; /* Texto escuro */
+    color: #ffffff; /* Texto escuro */
 }
 
 .formularioText {
@@ -163,4 +182,12 @@ table th:hover, tr:hover, td:hover {
     background-color: #ffffff; /* Fundo branco */
     color: #222222; /* Texto escuro */
     font-weight: bold;
+}
+
+.fundoFormulario{
+    background-color: rgb(179, 179, 179);
+}
+
+.corBranca{
+    color: white;
 }

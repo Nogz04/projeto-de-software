@@ -10,7 +10,7 @@ table, th, td {
 body {
     font-family: "Agency FB", sans-serif;
     color: #ffffff; /* Cor do texto em branco */
-    background-color: #121212; /* Cor de fundo escura */
+    background-color: #1f052f; /* Cor de fundo escura */
 }
 
 .estiloDevJunior{
@@ -34,6 +34,25 @@ body {
 
     background-color: #085e01;
     
+
+}
+
+.botaoTemaEscuro{
+
+    border: white 1px solid;
+    border-radius: 5px;
+    background-color: gray;
+    padding: 5px;
+    margin-left: 5px;
+
+}
+
+
+.divTemas{
+
+    display: flex;
+    justify-content: flex-end;
+
 
 }
 
@@ -71,6 +90,7 @@ table th:hover, tr:hover, td:hover {
     text-decoration: underline;
     cursor: pointer;
     background-color: #555555; /* Fundo de hover nas linhas */
+    color: #4a90e2;
 }
 
 .subtitulos {
@@ -117,12 +137,12 @@ table th:hover, tr:hover, td:hover {
 }
 
 .botaoVoltarTopo {
-    padding: 10px;
+    padding: 5px;
     border-radius: 10px;
     border: 2px solid #ffffff;
     background-color: #6a1b9a; /* Roxo escuro */
     color: #ffffff; /* Texto branco */
-    font-size: 18px;
+    font-size: 15px;
     margin-top: 30px;
     cursor: pointer;
     font-weight: bold;
@@ -147,22 +167,23 @@ table th:hover, tr:hover, td:hover {
 }
 
 .formularioText {
-    border: 3px solid #444444; /* Cor da borda mais suave */
+    border: 3px solid #d2d2d2; /* Cor da borda mais suave */
     border-radius: 10px;
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: #333333; /* Fundo escuro */
+    background-color: #f6fef3; /* Fundo escuro */
     color: #ffffff; /* Texto branco */
 }
 
 .formularioSelect {
-    border: 3px solid #444444; /* Cor da borda mais suave */
+    border: 3px solid #2c2c2c; /* Cor da borda mais suave */
     border-radius: 10px;
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: #333333; /* Fundo escuro */
-    color: #ffffff; /* Texto branco */
+    background-color: #f6fef3; /* Fundo escuro */
+    color: #808080; /* Texto branco */
     font-weight: bold;
 }
+

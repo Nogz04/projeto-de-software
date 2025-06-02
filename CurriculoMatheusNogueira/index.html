@@ -22,6 +22,14 @@
 </head>
 <body style="background-image: url('/templates/FundoOFC.png'); background-size: cover; background-repeat: no-repeat; background-position: center; background-attachment: fixed;">
 
+<div class="divTemas">
+
+  <button onclick="changeStyle('light')" class="botaoTemaClaro">🌞 Modo Claro</button>
+  <button onclick="changeStyle('dark')" class="botaoTemaEscuro">🌙 Modo Escuro</button>
+
+</div>
+
+
 <h1 class="titulo" id="topo">CV - Matheus Nogueira Albuquerque</h1>
 
 <h1 class="estiloDevJunior"> Desenvolvedor Júnior</h1>
@@ -121,24 +129,85 @@
 <br>
 <h2 class="subtitulos">Formulário de Contato</h2> <br> <br>
 
-<form action="/processarFormulario1" method="post">
+<form action="/processarFormulario" method="post" style="background-color: rgb(77, 4, 112); display: inline-block; padding: 20px;">
   <label for="nome" class="subtituloNomeEmail">Nome:</label> <br>
   <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required class="formularioText"> <br>
 
   <label for="email" class="subtituloNomeEmail">Email:</label> <br>
   <input type="email" id="email" name="email" placeholder="Digite seu email" required class="formularioText"> <br>
 
-  <label for="curso" class="subtituloNomeEmail">Curso de Interesse:</label> <br>
+  <label for="curso" class="subtituloNomeEmail">De que curso você é?</label> <br>
   <select id="curso" name="curso" required class="formularioSelect">
+
+  <optgroup label="Ciências Exatas e Tecnológicas">
     <option value="CC">Ciência da Computação</option>
-    <option value="JD">Jogos Digitais</option>
-    <option value="SI">Sistemas de Informação</option>
-    <option value="ARQ">Arquitetura de Urbanismo</option>
-    <option value="DIR">Direito</option>
-    <option value="MED">Medicina</option>
-    <option value="ODONTO">Odontologia</option>
+    <option value="ENGCOMP">Engenharia da Computação</option>
     <option value="ENGCIVIL">Engenharia Civil</option>
-  </select> <br>
+    <option value="ENGPROD">Engenharia de Produção</option>
+    <option value="ENGELE">Engenharia Elétrica</option>
+    <option value="ENGMEC">Engenharia Mecânica</option>
+    <option value="MAT">Matemática</option>
+    <option value="FISICA">Física</option>
+    <option value="QUIMICA">Química</option>
+    <option value="EST">Estatística</option>
+    <option value="TECINF">Tecnologia da Informação</option>
+    <option value="SI">Sistemas de Informação</option>
+    <option value="JD">Jogos Digitais</option>
+    <option value="DSG">Design</option>
+  </optgroup>
+
+  <optgroup label="Ciências Biológicas e da Saúde">
+    <option value="BIO">Biologia</option>
+    <option value="BIOMED">Biomedicina</option>
+    <option value="ENF">Enfermagem</option>
+    <option value="FARMA">Farmácia</option>
+    <option value="FISIOT">Fisioterapia</option>
+    <option value="MED">Medicina</option>
+    <option value="MEDVET">Medicina Veterinária</option>
+    <option value="NUTRI">Nutrição</option>
+    <option value="ODONTO">Odontologia</option>
+    <option value="ZOOTEC">Zootecnia</option>
+  </optgroup>
+
+  <optgroup label="Ciências Humanas e Sociais">
+    <option value="DIREITO">Direito</option>
+    <option value="FILOS">Filosofia</option>
+    <option value="HIST">História</option>
+    <option value="SOC">Sociologia</option>
+    <option value="PSICO">Psicologia</option>
+    <option value="GEOG">Geografia</option>
+    <option value="PEDAG">Pedagogia</option>
+    <option value="RELINT">Relações Internacionais</option>
+  </optgroup>
+
+  <optgroup label="Linguística, Letras e Artes">
+    <option value="LETRAS">Letras</option>
+    <option value="ARTES">Artes Visuais</option>
+    <option value="MUS">Música</option>
+    <option value="MODA">Moda</option>
+    <option value="CINE">Cinema</option>
+    <option value="JOR">Jornalismo</option>
+    <option value="PUBLI">Publicidade e Propaganda</option>
+  </optgroup>
+
+  <optgroup label="Ciências Sociais Aplicadas">
+    <option value="ADM">Administração</option>
+    <option value="MARK">Marketing</option>
+    <option value="COMEX">Comércio Exterior</option>
+    <option value="CONT">Contabilidade</option>
+    <option value="GESPUB">Gestão Pública</option>
+    <option value="RH">Recursos Humanos</option>
+    <option value="LOG">Logística</option>
+    <option value="TUR">Turismo</option>
+  </optgroup>
+
+  <optgroup label="Educação Física e Esportes">
+    <option value="EDFIS">Educação Física</option>
+  </optgroup>
+
+  
+</select>
+ <br>
 
   <p class="corBranca">Gênero:</p>
   <input type="radio" id="masc" name="genero" value="masculino">
@@ -146,17 +215,24 @@
   <input type="radio" id="fem" name="genero" value="feminino">
   <label for="fem" class="corBranca">Feminino</label><br><br>
 
-  <input type="submit" value="Enviar"  class="botaoEnviar">
-</form>
 
-<form action="/processarFormulario2" method="post"></form>
-  <p>Interesses:</p>
-  <input type="checkbox" id="html" name="interesses" value="HTML">
-  <label for="html">HTML</label>
+  <p class="corBranca">Interesse em aprender:</p>
+  <input type="checkbox" id="html" name="interesses" value="HTML" >
+  <label for="html" class="corBranca">HTML</label>
   <input type="checkbox" id="css" name="interesses" value="CSS">
-  <label for="css">CSS</label><br><br>
+  <label for="css" class="corBranca">CSS</label>
+  <input type="checkbox" id="js" name="interesses" value="JS">
+  <label for="js" class="corBranca">JS</label>
+  <input type="checkbox" id="c" name="interesses" value="C">
+  <label for="c" class="corBranca">C</label>
+  <input type="checkbox" id="java" name="interesses" value="JAVA">
+  <label for="java" class="corBranca">JAVA</label>
+  <input type="checkbox" id="sql" name="interesses" value="SQL">
+  <label for="sql" class="corBranca">SQL</label>
+  <br><br><br>
 
-  <label for="mensagem">Mensagem:</label><br>
+
+  <label for="mensagem" class="corBranca">Envie uma mensagem:</label><br><br>
   <textarea id="mensagem" name="mensagem" rows="4" cols="40"></textarea><br><br>
 
   <input type="submit" value="Enviar" class="botaoEnviar">
@@ -170,9 +246,8 @@
 
 <br><br><br>
 
-<!-- Botões para alternar entre os temas -->
-<button onclick="changeStyle('light')">🌞 Modo Claro</button>
-<button onclick="changeStyle('dark')">🌙 Modo Escuro</button>
+
+
 
 </body>
 </html>
